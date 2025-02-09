@@ -1,3 +1,4 @@
+
 import carModel from '../models/carModel.js';
 
 
@@ -27,7 +28,7 @@ const getCarById = async (req, res) => {
             return res.json({ success: false, message: "Car not found" });
         }
 
-        res.json({ success: true, car });
+        res.json({ success: true, data: car });
 
     } catch (error) {
         console.log(error);
@@ -119,7 +120,48 @@ const updateCar = async (req, res) => {
         res.json({ success: false, message: error.message });
     }
 };
+// New: Car Listing API with filters and pagination
+const carListing = async (req, res) => {
+    try {
+        // Extract filters from query parameters
+        let { available, make, model, minPrice, maxPrice, page, limit } = req.query;
 
+        const filter = {};
+
+        if (available !== undefined) {
+            filter.available = available === 'true' || available === true;
+        }
+        if (make) {
+            filter.make = make;
+        }
+        if (model) {
+            filter.model = model;
+        }
+        if (minPrice !== undefined || maxPrice !== undefined) {
+            filter.pricePerDay = {};
+            if (minPrice !== undefined) {
+                filter.pricePerDay.$gte = Number(minPrice);
+            }
+            if (maxPrice !== undefined) {
+                filter.pricePerDay.$lte = Number(maxPrice);
+            }
+        }
+
+        // Set up pagination defaults
+        page = Number(page) || 1;
+        limit = Number(limit) || 10;
+        const skip = (page - 1) * limit;
+
+        // Get total count and paginated data
+        const total = await carModel.countDocuments(filter);
+        const cars = await carModel.find(filter).skip(skip).limit(limit);
+
+        res.json({ success: true, total, page, limit, data: cars });
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: error.message });
+    }
+};
 // Delete car
 const deleteCar = async (req, res) => {
     try {
@@ -137,4 +179,4 @@ const deleteCar = async (req, res) => {
     }
 };
 
-export { getAllCars, getCarById, createCar, updateCar, deleteCar };
+export { getAllCars, getCarById, createCar, updateCar, deleteCar, carListing };

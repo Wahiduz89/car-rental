@@ -1,7 +1,8 @@
 import express from 'express';
 import { createBooking, getAllBookings, getBookingById, updateBooking, deleteBooking, approveBooking } from '../controllers/bookingController.js';
 import authUser from '../middleware/authUser.js'; 
-import { errorHandler } from '../middleware/errorHandler.js';
+
+
 
 
 const bookingRouter = express.Router();
@@ -31,7 +32,6 @@ bookingRouter.put("/bookings/:id/approve", authUser, approveBooking);
 
 
 
-// Error handling
-bookingRouter.use(errorHandler);
+
 
 export default bookingRouter;

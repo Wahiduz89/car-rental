@@ -5,7 +5,6 @@ import connectDB from "./config/mongodb.js"
 import userRouter from "./routes/userRoute.js"
 import carRouter from "./routes/carRoute.js"
 import bookingRouter from "./routes/bookingRoute.js"
-import errorHandler from "./middleware/errorMiddleware.js"
 
 // App Config
 const app = express()
@@ -22,8 +21,7 @@ app.use("/api/user", userRouter)
 app.use("/api/car", carRouter)
 app.use("/api/booking", bookingRouter)
 
-// Error Middleware
-app.use(errorHandler)
+
 
 // Default Route
 app.get("/", (req, res) => {
