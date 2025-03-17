@@ -1,15 +1,44 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FaCarSide, FaChair } from "react-icons/fa";
 import { GiGearStickPattern, GiGasPump } from "react-icons/gi";
-import cars from "../data/cardata";
+import cars from "../data/carData";
 
 const Cars = () => {
+  const location = useLocation();
+  const [filteredCars, setFilteredCars] = useState(cars);
+  const searchParams = location.state?.searchParams || {};
+
+  useEffect(() => {
+    const filterCars = () => {
+      let result = [...cars];
+
+      if (searchParams.pickupLocation) {
+        result = result.filter(car => 
+          car.location.toLowerCase() === searchParams.pickupLocation.toLowerCase()
+        );
+      }
+
+      if (searchParams.pickupDate && searchParams.dropoffDate) {
+        result = result.filter(car => 
+          new Date(searchParams.pickupDate) >= new Date(car.availableFrom) &&
+          new Date(searchParams.dropoffDate) <= new Date(car.availableTo)
+        );
+      }
+
+      setFilteredCars(result);
+    };
+
+    filterCars();
+  }, [searchParams]);
+
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold text-center mb-8">Our Cars</h1>
+      <h1 className="text-3xl font-bold text-center mb-8">
+        {filteredCars.length > 0 ? "Available Cars" : "No Cars Available"}
+      </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {cars.map((car) => (
+        {filteredCars.map((car) => (
           <Link to={`/cars/${car.id}`} key={car.id}>
             <div className="bg-white border-2 border-gray-200 shadow-lg rounded-xl overflow-hidden transform hover:scale-105 hover:border-blue-500 transition-all duration-300 w-full max-w-sm mx-auto flex flex-col">
               <img

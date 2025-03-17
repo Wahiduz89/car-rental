@@ -1,5 +1,6 @@
 // src/components/HeroSection.jsx
 import React, { useState, useEffect } from "react";
+import SearchButton from "./SearchButton";
 
 const HeroSection = () => {
   const [formData, setFormData] = useState({
@@ -25,11 +26,6 @@ const HeroSection = () => {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Search for cars:", formData);
-  };
-
   return (
     <section
       className="relative w-full h-screen flex items-center justify-center bg-cover bg-center text-white"
@@ -45,10 +41,7 @@ const HeroSection = () => {
         </p>
 
         {/* Rental Search Form */}
-        <form
-          onSubmit={handleSubmit}
-          className="grid md:grid-cols-3 gap-4 bg-white p-4 rounded-xl shadow-lg text-gray-900"
-        >
+        <form className="grid md:grid-cols-3 gap-4 bg-white p-4 rounded-xl shadow-lg text-gray-900">
           {/* Pickup Location */}
           <div>
             <label className="block text-sm font-medium mb-1">
@@ -97,12 +90,7 @@ const HeroSection = () => {
 
           {/* Search Button */}
           <div className="md:col-span-3">
-            <button
-              type="submit"
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold p-3 rounded-md"
-            >
-              Search Cars
-            </button>
+            <SearchButton formData={formData} />
           </div>
         </form>
       </div>
