@@ -1,19 +1,17 @@
 // src/App.js
 import React from 'react';
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
-import Cars from './pages/Cars';     // Your CarList component
+import Cars from './pages/Cars';
 import CarDetail from './pages/CarDetails';
-import TermsAndConditions from "./pages/TermsAndConditions"; // adjust the path as needed
+import TermsAndConditions from "./pages/TermsAndConditions";
 import Contact from './pages/Contact';
 import Footer from './components/Footer';
-
 
 const App = () => {
   return (
     <div>
-
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -23,10 +21,8 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
       </Routes>
       <Footer />
-
     </div>
   );
 }
-
 
 export default App;
