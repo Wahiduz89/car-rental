@@ -1,97 +1,168 @@
-import React from "react";
+import React from 'react';
 
 const TermsAndConditions = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-gray-100">
-      {/* Header */}
-      <header className="bg-white shadow">
-        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold text-gray-900">
-            Car Rental Terms &amp; Conditions
-          </h1>
-        </div>
-      </header>
+    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 font-sans">
+      <div className="max-w-4xl mx-auto">
+        <article className="bg-white shadow-lg rounded-xl overflow-hidden">
+          {/* Header Section */}
+          <header className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-12 px-6">
+            <div className="text-center">
+              <h1 className="text-3xl font-bold mb-3">Car Rental Terms & Conditions</h1>
+              <p className="opacity-90">
+                Effective: {new Date().toLocaleDateString('en-US', { dateStyle: 'long' })}
+              </p>
+            </div>
+          </header>
 
-      {/* Main Content */}
-      <main className="flex-grow">
-        <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
-          <div className="bg-white p-6 rounded-lg shadow">
-            {/* Section 1 */}
-            <section className="mb-6">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-4">1. Introduction</h2>
-              <p className="text-gray-700">
-                Welcome to [Car Rental Name]. By accessing and using our website and services, you agree to be bound by these Terms &amp; Conditions. Please read them carefully.
+          {/* Main Content */}
+          <div className="p-8">
+            {/* Introduction */}
+            <section className="mb-10">
+              <p className="text-gray-600 text-lg mb-8">
+                These Terms and Conditions govern your use of our car rental services. 
+                Please read them carefully before making a reservation.
               </p>
             </section>
 
-            {/* Section 2 */}
-            <section className="mb-6">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-4">2. License to Use Our Services</h2>
-              <p className="text-gray-700">
-                We grant you a limited, non-exclusive, non-transferable license to access and use our website for personal, non-commercial purposes only.
-              </p>
-            </section>
+            {/* Key Sections */}
+            <div className="space-y-12">
+              {/* Eligibility */}
+              <section className="border-l-4 border-blue-600 pl-6">
+                <h2 className="text-2xl font-bold text-gray-900 mb-5">1. Eligibility</h2>
+                <div className="space-y-4 text-gray-700">
+                  <div className="flex items-start">
+                    <span className="text-blue-600 text-xl mr-3">•</span>
+                    <div>
+                      <h3 className="font-semibold mb-1">Age Requirements</h3>
+                      <ul className="list-disc pl-5 space-y-2">
+                        <li>Minimum 21 years for standard vehicles</li>
+                        <li>Minimum 25 years for premium/luxury vehicles</li>
+                        <li>Young driver fee: $15/day under 25</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </section>
 
-            {/* Section 3 */}
-            <section className="mb-6">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-4">3. Booking and Payment</h2>
-              <p className="text-gray-700 mb-2">
-                All car rental bookings are subject to availability and confirmation. Full payment is required at the time of booking.
-              </p>
-              <p className="text-gray-700">
-                Prices, promotions, and discounts are subject to change without prior notice.
-              </p>
-            </section>
+              {/* Pricing & Fees */}
+              <section>
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">2. Pricing & Fees</h2>
+                <div className="grid gap-6 md:grid-cols-2">
+                  <div className="bg-blue-50 p-6 rounded-lg">
+                    <h3 className="font-semibold text-blue-800 mb-3">Standard Charges</h3>
+                    <ul className="space-y-3">
+                      <li className="flex justify-between">
+                        <span>Base daily rate</span>
+                        <span className="font-medium">$49.99</span>
+                      </li>
+                      <li className="flex justify-between">
+                        <span>Security deposit</span>
+                        <span className="font-medium">$500.00</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="bg-red-50 p-6 rounded-lg">
+                    <h3 className="font-semibold text-red-800 mb-3">Additional Fees</h3>
+                    <ul className="space-y-3">
+                      <li className="flex justify-between">
+                        <span>Late return (per hour)</span>
+                        <span className="font-medium">1.5× hourly rate</span>
+                      </li>
+                      <li className="flex justify-between">
+                        <span>Cleaning fee</span>
+                        <span className="font-medium">$150.00</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
 
-            {/* Section 4 */}
-            <section className="mb-6">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-4">4. User Responsibilities</h2>
-              <p className="text-gray-700">
-                You are responsible for providing accurate information during the booking process and ensuring compliance with all local and national laws while using our services.
-              </p>
-            </section>
+              {/* Prohibited Uses */}
+              <section>
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">3. Prohibited Uses</h2>
+                <div className="grid gap-4 md:grid-cols-2">
+                  <div className="p-4 bg-gray-50 rounded-lg">
+                    <h3 className="font-semibold text-gray-800 mb-2">Vehicle Restrictions</h3>
+                    <ul className="list-disc pl-5 space-y-2 text-gray-600">
+                      <li>No off-road driving</li>
+                      <li>No towing without approval</li>
+                      <li>No smoking in vehicles</li>
+                    </ul>
+                  </div>
+                  <div className="p-4 bg-gray-50 rounded-lg">
+                    <h3 className="font-semibold text-gray-800 mb-2">Legal Restrictions</h3>
+                    <ul className="list-disc pl-5 space-y-2 text-gray-600">
+                      <li>No illegal activities</li>
+                      <li>No unauthorized drivers</li>
+                      <li>No alcohol/drug use</li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
 
-            {/* Section 5 */}
-            <section className="mb-6">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-4">5. Limitation of Liability</h2>
-              <p className="text-gray-700">
-                [Car Rental Name] shall not be liable for any indirect, incidental, or consequential damages arising from the use or inability to use our services.
-              </p>
-            </section>
+              {/* Insurance */}
+              <section>
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">4. Insurance</h2>
+                <div className="overflow-x-auto">
+                  <table className="w-full border-collapse">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th className="p-3 text-left">Coverage Type</th>
+                        <th className="p-3 text-left">Included</th>
+                        <th className="p-3 text-left">Optional Upgrade</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="border-t">
+                        <td className="p-3">Collision Damage</td>
+                        <td className="p-3">$500 deductible</td>
+                        <td className="p-3">$0 deductible ($15/day)</td>
+                      </tr>
+                      <tr className="border-t bg-gray-50">
+                        <td className="p-3">Liability</td>
+                        <td className="p-3">$1M coverage</td>
+                        <td className="p-3">$2M coverage ($5/day)</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
 
-            {/* Section 6 */}
-            <section className="mb-6">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-4">6. Governing Law</h2>
-              <p className="text-gray-700">
-                These Terms &amp; Conditions are governed by the laws of [Your Jurisdiction]. Any disputes will be resolved exclusively in the courts located within that jurisdiction.
-              </p>
-            </section>
-
-            {/* Section 7 */}
-            <section>
-              <h2 className="text-2xl font-semibold text-gray-800 mb-4">7. Contact Information</h2>
-              <p className="text-gray-700">
-                If you have any questions about these Terms &amp; Conditions, please contact us at{" "}
-                <a
-                  href="mailto:support@carrental.com"
-                  className="text-blue-600 hover:underline"
-                >
-                  support@carrental.com
-                </a>.
-              </p>
-            </section>
+              {/* Contact */}
+              <section className="bg-gray-50 p-6 rounded-lg">
+                <h2 className="text-2xl font-bold text-gray-900 mb-4">Contact Us</h2>
+                <div className="grid gap-4 md:grid-cols-2">
+                  <div>
+                    <h3 className="font-semibold mb-2">Customer Support</h3>
+                    <p className="text-gray-600">
+                      📞 +1 (800) 123-4567<br />
+                      ✉️ support@rental.com<br />
+                      🕒 24/7 Availability
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold mb-2">Legal Department</h3>
+                    <p className="text-gray-600">
+                      ✉️ legal@rental.com<br />
+                      📍 123 Rental St, Car City<br />
+                      📠 +1 (800) 765-4321
+                    </p>
+                  </div>
+                </div>
+              </section>
+            </div>
           </div>
-        </div>
-      </main>
 
-      {/* Footer */}
-      <footer className="bg-white shadow">
-        <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-gray-600">
-            &copy; {new Date().getFullYear()} [Car Rental Name]. All rights reserved.
-          </p>
-        </div>
-      </footer>
+          {/* Footer */}
+          <footer className="border-t p-8 bg-gray-50">
+            <div className="text-center text-sm text-gray-600">
+              <p>© {new Date().getFullYear()} Premium Car Rentals. All rights reserved.</p>
+              <p className="mt-2">Subject to change without notice. Verify terms at time of rental.</p>
+            </div>
+          </footer>
+        </article>
+      </div>
     </div>
   );
 };

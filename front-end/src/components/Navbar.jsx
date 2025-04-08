@@ -17,7 +17,7 @@ const Navbar = () => {
                 <img
                   className="h-8 w-auto"
                   src="/logo.png"
-                  alt="Car Rental Logo"
+                  alt="sahil  rentals"
                 />
               </a>
             </div>
